@@ -9,7 +9,7 @@
 
 (2)emysql/src/emysql_conn_mgr.erl:43: type dict() undefined
 	解决如下：
-		% -record(state, {pools, lockers = dict:new() :: dict()}).
+		%-record(state, {pools, lockers = dict:new() :: dict()}).
 		-record(state, {pools, lockers = dict:new()}).
 
 (3)emysql/src/emysql.erl:672: type dict() undefined
