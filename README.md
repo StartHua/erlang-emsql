@@ -10,19 +10,23 @@
 (2)emysql/src/emysql_conn_mgr.erl:43: type dict() undefined
 	解决如下：
 		%-record(state, {pools, lockers = dict:new() :: dict()}).
+		
 		-record(state, {pools, lockers = dict:new()}).
 
 (3)emysql/src/emysql.erl:672: type dict() undefined
 	解决如下：
+	
 % -spec as_dict(Result) -> Dict
 %   when
 %     Result :: #result_packet{},
 %     Dict :: dict().
+
 as_dict(Res) -> emysql_conv:as_dict(Res).
 
 (4) 两个关于时间的warming,原因新的otp已经换了时间函数
 emysql/src/emysql_conn_mgr.erl:422: Warning: erlang:now/0: Deprecated BIF. See the "Time and Time Correction in Erlang" chapter of the ERTS User's Guide for more information.
 /emysql/src/emysql_conn.erl:337: Warning: erlang:now/0: Deprecated BIF. See the "Time and Time Correction in Erlang" chapter of the ERTS User's Guide for more information.
+
 erlang:now 改 erlang:timestamp()
 
 
